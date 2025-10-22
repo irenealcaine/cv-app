@@ -119,7 +119,7 @@
           </button>
           <button 
             @click="editarCV"
-            class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition duration-200 flex items-center"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition duration-200 flex items-center"
           >
             <span class="mr-2">✏️</span> Editar CV
           </button>

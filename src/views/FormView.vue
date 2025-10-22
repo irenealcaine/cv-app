@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import CVHeader from '../components/CVHeader.vue'
 import PersonalDataForm from '../components/PersonalDataForm.vue'
@@ -49,7 +49,7 @@ import ExperienceForm from '../components/ExperienceForm.vue'
 import { useCVStore } from '../composables/useCVStore.js'
 
 const router = useRouter()
-const { setCVData } = useCVStore()
+const { setCVData, getCVData } = useCVStore()
 
 // Estado reactivo
 const personalData = ref({
@@ -67,6 +67,22 @@ const personalData = ref({
 
 const educacion = ref([])
 const experiencia = ref([])
+
+// Cargar datos existentes del store al montar el componente
+onMounted(() => {
+  const existingData = getCVData()
+  
+  // Si hay datos existentes, cargarlos
+  if (existingData.datosPersonales.nombre) {
+    personalData.value = { ...existingData.datosPersonales }
+    educacion.value = existingData.formacion.map(edu => ({ ...edu }))
+    experiencia.value = existingData.experiencia.map(exp => ({ ...exp }))
+  } else {
+    // Si no hay datos, agregar elementos iniciales vacíos
+    agregarEducacion()
+    agregarExperiencia()
+  }
+})
 
 // Funciones para manejar datos personales
 const updatePersonalData = ({ field, value }) => {
@@ -140,8 +156,4 @@ const enviarFormulario = () => {
   // Redirigir a la vista del CV
   router.push('/cv')
 }
-
-// Agregar elementos iniciales
-agregarEducacion()
-agregarExperiencia()
 </script>
