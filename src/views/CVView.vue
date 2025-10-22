@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen py-8">
     <div class="max-w-4xl mx-auto">
       <!-- Botón volver -->
       <div class="mb-6 no-print">
@@ -10,7 +10,7 @@
       </div>
 
       <!-- CV Container -->
-      <div class="bg-white shadow-lg">
+      <div class="bg-white">
         <!-- Header con nombre y descripción -->
         <CVPersonalHeader :personal-data="cvData.datosPersonales" />
 
