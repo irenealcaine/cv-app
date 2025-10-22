@@ -13,6 +13,7 @@ const cvData = ref({
     codigoPostal: '',
     linkedin: '',
     github: '',
+    portfolio: '',
     descripcion: ''
   },
   formacion: [],

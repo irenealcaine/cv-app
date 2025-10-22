@@ -25,14 +25,28 @@
           @update-experience="updateExperience"
         />
 
-        <!-- Botón de envío -->
-        <div class="p-6 bg-gray-50 text-center">
-          <button 
-            type="submit"
-            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-lg"
-          >
-            📄 Generar CV
-          </button>
+        <!-- Botones -->
+        <div class="p-6 bg-gray-50 text-center space-y-4">
+          <!-- Botón de datos de ejemplo -->
+          <div>
+            <button 
+              type="button"
+              @click="llenarDatosEjemplo"
+              class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition duration-300 mr-4"
+            >
+              🔧 Llenar con datos de ejemplo
+            </button>
+          </div>
+          
+          <!-- Botón de envío -->
+          <div>
+            <button 
+              type="submit"
+              class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-lg"
+            >
+              📄 Generar CV
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -55,6 +69,7 @@ const { setCVData, getCVData } = useCVStore()
 const personalData = ref({
   nombre: '',
   apellidos: '',
+  descripcion: '',
   fechaNacimiento: '',
   telefono: '',
   email: '',
@@ -62,7 +77,8 @@ const personalData = ref({
   ciudad: '',
   codigoPostal: '',
   linkedin: '',
-  github: ''
+  github: '',
+  portfolio: ''
 })
 
 const educacion = ref([])
@@ -134,6 +150,76 @@ const updateExperience = ({ id, field, value }) => {
   if (experience) {
     experience[field] = value
   }
+}
+
+// Función para llenar con datos de ejemplo
+const llenarDatosEjemplo = () => {
+  // Datos personales de ejemplo
+  personalData.value = {
+    nombre: 'María',
+    apellidos: 'García López',
+    descripcion: 'Desarrolladora Full Stack apasionada por crear soluciones tecnológicas innovadoras. Con experiencia en desarrollo web moderno y metodologías ágiles.',
+    fechaNacimiento: '1995-03-15',
+    telefono: '+34 123 456 789',
+    email: 'maria.garcia@email.com',
+    direccion: 'Calle Mayor 123, 4º B',
+    ciudad: 'Madrid',
+    codigoPostal: '28001',
+    linkedin: 'https://linkedin.com/in/maria-garcia',
+    github: 'https://github.com/maria-garcia',
+    portfolio: 'https://maria-garcia.dev'
+  }
+
+  // Educación de ejemplo
+  educacion.value = [
+    {
+      id: 1001,
+      titulo: 'Ingeniería Informática',
+      institucion: 'Universidad Politécnica de Madrid',
+      fechaInicio: '2013-09',
+      fechaFin: '2017-06',
+      descripcion: 'Especialización en Ingeniería del Software. Proyecto final sobre aplicaciones web progresivas con React y Node.js.'
+    },
+    {
+      id: 1002,
+      titulo: 'Máster en Desarrollo Web Full Stack',
+      institucion: 'TheBridge Academy',
+      fechaInicio: '2017-09',
+      fechaFin: '2018-03',
+      descripcion: 'Máster intensivo enfocado en tecnologías modernas como Vue.js, React, Node.js, MongoDB y metodologías ágiles.'
+    }
+  ]
+
+  // Experiencia de ejemplo
+  experiencia.value = [
+    {
+      id: 2001,
+      puesto: 'Desarrolladora Full Stack',
+      empresa: 'TechSolutions S.L.',
+      fechaInicio: '2021-06',
+      fechaFin: '',
+      descripcion: 'Desarrollo de aplicaciones web con Vue.js y Node.js. Implementación de APIs RESTful y gestión de bases de datos. Colaboración en equipos ágiles usando Scrum.',
+      actual: true
+    },
+    {
+      id: 2002,
+      puesto: 'Desarrolladora Frontend',
+      empresa: 'StartupInnovate',
+      fechaInicio: '2019-03',
+      fechaFin: '2021-05',
+      descripcion: 'Desarrollo de interfaces de usuario responsivas con React y TypeScript. Optimización de rendimiento y experiencia de usuario. Integración con APIs y servicios externos.',
+      actual: false
+    },
+    {
+      id: 2003,
+      puesto: 'Desarrolladora Junior',
+      empresa: 'WebDev Agency',
+      fechaInicio: '2018-04',
+      fechaFin: '2019-02',
+      descripcion: 'Desarrollo de sitios web corporativos con HTML5, CSS3 y JavaScript. Maquetación responsive y optimización SEO.',
+      actual: false
+    }
+  ]
 }
 
 // Función para enviar formulario
