@@ -31,17 +31,6 @@
       </div>
       
       <div class="space-y-2">
-        <label for="fechaNacimiento" class="block text-sm font-semibold text-gray-700">Fecha de Nacimiento</label>
-        <input 
-          id="fechaNacimiento"
-          :value="personalData.fechaNacimiento"
-          @input="updateField('fechaNacimiento', $event.target.value)"
-          type="date"
-          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-        >
-      </div>
-      
-      <div class="space-y-2">
         <label for="telefono" class="block text-sm font-semibold text-gray-700">Teléfono *</label>
         <input 
           id="telefono"
@@ -68,18 +57,6 @@
       </div>
       
       <div class="space-y-2">
-        <label for="direccion" class="block text-sm font-semibold text-gray-700">Dirección</label>
-        <input 
-          id="direccion"
-          :value="personalData.direccion"
-          @input="updateField('direccion', $event.target.value)"
-          type="text"
-          placeholder="Calle, número"
-          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-        >
-      </div>
-      
-      <div class="space-y-2">
         <label for="ciudad" class="block text-sm font-semibold text-gray-700">Ciudad</label>
         <input 
           id="ciudad"
@@ -90,19 +67,7 @@
           class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
         >
       </div>
-      
-      <div class="space-y-2">
-        <label for="codigoPostal" class="block text-sm font-semibold text-gray-700">Código Postal</label>
-        <input 
-          id="codigoPostal"
-          :value="personalData.codigoPostal"
-          @input="updateField('codigoPostal', $event.target.value)"
-          type="text"
-          placeholder="28001"
-          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-        >
-      </div>
-      
+    
       <div class="space-y-2">
         <label for="linkedin" class="block text-sm font-semibold text-gray-700">LinkedIn</label>
         <input 
@@ -123,6 +88,18 @@
           @input="updateField('github', $event.target.value)"
           type="url"
           placeholder="https://github.com/tuusuario"
+          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
+        >
+      </div>
+
+      <div class="space-y-2">
+        <label for="portfolio" class="block text-sm font-semibold text-gray-700">Portfolio</label>
+        <input 
+          id="portfolio"
+          :value="personalData.portfolio"
+          @input="updateField('portfolio', $event.target.value)"
+          type="url"
+          placeholder="https://tu-portfolio.com"
           class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
         >
       </div>
