@@ -67,7 +67,22 @@
           class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
         >
       </div>
-    
+    </div>
+
+    <!-- Campo de descripción en toda la anchura -->
+    <div class="mt-4 space-y-2">
+      <label for="descripcion" class="block text-sm font-semibold text-gray-700">Descripción Profesional</label>
+      <textarea 
+        id="descripcion"
+        :value="personalData.descripcion"
+        @input="updateField('descripcion', $event.target.value)"
+        rows="3"
+        placeholder="Breve descripción profesional o resumen de perfil..."
+        class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200 resize-y"
+      ></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
       <div class="space-y-2">
         <label for="linkedin" class="block text-sm font-semibold text-gray-700">LinkedIn</label>
         <input 

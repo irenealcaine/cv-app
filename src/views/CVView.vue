@@ -1,127 +1,135 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-white py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Botón para volver al formulario -->
-      <div class="mb-6">
-        <button 
-          @click="volverAlFormulario"
-          class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition duration-200 flex items-center"
-        >
+      <div class="mb-6 no-print">
+        <button @click="volverAlFormulario"
+          class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 text-sm font-medium">
           ← Volver al Formulario
         </button>
       </div>
 
       <!-- CV Display -->
-      <div class="bg-white rounded-lg shadow-xl overflow-hidden">
-        
+      <div class="bg-white max-w-3xl mx-auto">
+
         <!-- Header del CV -->
-        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8">
-          <div class="text-center">
-            <h1 class="text-4xl font-bold mb-2">
+        <div class="p-1 border-b border-gray-300 w-full">
+          <div class="w-3/4">
+            <h1 class="text-3xl font-bold text-black mb-4 uppercase tracking-wide">
               {{ cvData.datosPersonales.nombre }} {{ cvData.datosPersonales.apellidos }}
             </h1>
-            <div class="flex flex-wrap justify-center gap-4 text-lg">
-              <span v-if="cvData.datosPersonales.telefono">📞 {{ cvData.datosPersonales.telefono }}</span>
-              <span v-if="cvData.datosPersonales.email">✉️ {{ cvData.datosPersonales.email }}</span>
-              <span v-if="cvData.datosPersonales.ciudad">📍 {{ cvData.datosPersonales.ciudad }}</span>
+            <div v-if="cvData.datosPersonales.descripcion"
+              class="mb-2 text-gray-700 mx-auto text-sm leading-relaxed">
+              {{ cvData.datosPersonales.descripcion }}
             </div>
           </div>
+
         </div>
 
-        <!-- Información Personal -->
-        <section v-if="hasPersonalInfo" class="p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2">👤</span> Información Personal
+        <!-- Datos Personales -->
+        <section class="p-1 border-b border-gray-300">
+          <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+            Datos Personales
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div v-if="cvData.datosPersonales.fechaNacimiento" class="flex items-center">
-              <span class="font-semibold text-gray-700 w-32">Fecha Nacimiento:</span>
-              <span>{{ formatDate(cvData.datosPersonales.fechaNacimiento) }}</span>
+          <div class="flex flex-col gap-1">
+            <div v-if="cvData.datosPersonales.telefono" class="flex">
+              <span class="w-1/6">Teléfono:</span>
+              <span class="ml-2 font-medium">{{ cvData.datosPersonales.telefono }}</span>
             </div>
-            <div v-if="cvData.datosPersonales.direccion" class="flex items-center">
-              <span class="font-semibold text-gray-700 w-32">Dirección:</span>
-              <span>{{ cvData.datosPersonales.direccion }}</span>
+            <div v-if="cvData.datosPersonales.email" class="flex">
+              <span class="w-1/6">Email:</span>
+              <span class="ml-2 font-medium">{{ cvData.datosPersonales.email }}</span>
             </div>
-            <div v-if="cvData.datosPersonales.codigoPostal" class="flex items-center">
-              <span class="font-semibold text-gray-700 w-32">Código Postal:</span>
-              <span>{{ cvData.datosPersonales.codigoPostal }}</span>
+            <div v-if="cvData.datosPersonales.ciudad" class="flex">
+              <span class="w-1/6">Ciudad:</span>
+              <span class="ml-2 font-medium">{{ cvData.datosPersonales.ciudad }}</span>
             </div>
+
           </div>
         </section>
 
         <!-- Enlaces -->
-        <section v-if="hasLinks" class="p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2">🔗</span> Enlaces
+        <section v-if="hasLinks" class="p-1 border-b border-gray-300">
+          <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+            Enlaces
           </h2>
-          <div class="flex flex-wrap gap-4">
-            <a v-if="cvData.datosPersonales.linkedin" 
-               :href="cvData.datosPersonales.linkedin" 
-               target="_blank"
-               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 flex items-center">
-              <span class="mr-2">💼</span> LinkedIn
-            </a>
-            <a v-if="cvData.datosPersonales.github" 
-               :href="cvData.datosPersonales.github" 
-               target="_blank"
-               class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg transition duration-200 flex items-center">
-              <span class="mr-2">🐙</span> GitHub
-            </a>
+          <div class="flex flex-col gap-1">
+            <div v-if="cvData.datosPersonales.linkedin" class="flex">
+              <span class="w-1/6">LinkedIn:</span>
+              <a :href="cvData.datosPersonales.linkedin" target="_blank"
+                class="ml-2 underline text-black hover:no-underline font-medium">
+                {{ cvData.datosPersonales.linkedin }}
+              </a>
+            </div>
+            <div v-if="cvData.datosPersonales.github" class="flex">
+              <span class="w-1/6">GitHub:</span>
+              <a :href="cvData.datosPersonales.github" target="_blank"
+                class="ml-2 underline text-black hover:no-underline font-medium">
+                {{ cvData.datosPersonales.github }}
+              </a>
+            </div>
+            <div v-if="cvData.datosPersonales.portfolio" class="flex">
+              <span class="w-1/6">Portfolio:</span>
+              <a :href="cvData.datosPersonales.portfolio" target="_blank"
+                class="ml-2 underline text-black hover:no-underline font-medium">
+                {{ cvData.datosPersonales.portfolio }}
+              </a>
+            </div>
           </div>
         </section>
 
         <!-- Formación Académica -->
-        <section v-if="cvData.formacion.length > 0" class="p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2">🎓</span> Formación Académica
+        <section v-if="cvData.formacion.length > 0" class="p-1 border-b border-gray-300">
+          <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+            Formación Académica
           </h2>
-          <div class="space-y-4">
-            <div v-for="edu in cvData.formacion" :key="edu.id" class="bg-gray-50 rounded-lg p-4">
-              <h3 class="text-lg font-semibold text-gray-800">{{ edu.titulo }}</h3>
-              <p class="text-blue-600 font-medium">{{ edu.institucion }}</p>
-              <div class="text-gray-600 text-sm mt-1">
-                <span v-if="edu.fechaInicio || edu.fechaFin">
-                  {{ formatDate(edu.fechaInicio) }} - {{ edu.fechaFin ? formatDate(edu.fechaFin) : 'En curso' }}
+          <div class="space-y-6">
+            <div v-for="edu in cvData.formacion" :key="edu.id">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-black">{{ edu.titulo }}</h3>
+                <span v-if="edu.fechaInicio || edu.fechaFin" class="text-sm text-gray-600">
+                  {{ formatDate(edu.fechaInicio) }}{{ edu.fechaFin ? ' - ' + formatDate(edu.fechaFin) : ' - En curso' }}
                 </span>
               </div>
-              <p v-if="edu.descripcion" class="text-gray-700 mt-2">{{ edu.descripcion }}</p>
+              <p class="font-medium text-sm mb-2">{{ edu.institucion }}</p>
+              <p v-if="edu.descripcion" class="text-sm text-gray-700 leading-relaxed">
+                {{ edu.descripcion }}
+              </p>
             </div>
           </div>
         </section>
 
         <!-- Experiencia Laboral -->
-        <section v-if="cvData.experiencia.length > 0" class="p-6">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <span class="mr-2">💼</span> Experiencia Laboral
+        <section v-if="cvData.experiencia.length > 0" class="p-1">
+          <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+            Experiencia Laboral
           </h2>
-          <div class="space-y-4">
-            <div v-for="exp in cvData.experiencia" :key="exp.id" class="bg-gray-50 rounded-lg p-4">
-              <h3 class="text-lg font-semibold text-gray-800">{{ exp.puesto }}</h3>
-              <p class="text-blue-600 font-medium">{{ exp.empresa }}</p>
-              <div class="text-gray-600 text-sm mt-1">
-                <span v-if="exp.fechaInicio || exp.fechaFin || exp.actual">
-                  {{ formatDate(exp.fechaInicio) }} - {{ exp.actual ? 'Actual' : formatDate(exp.fechaFin) }}
+          <div class="space-y-6">
+            <div v-for="exp in cvData.experiencia" :key="exp.id">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-black">{{ exp.puesto }}</h3>
+                <span v-if="exp.fechaInicio || exp.fechaFin || exp.actual" class="text-sm text-gray-600">
+                  {{ formatDate(exp.fechaInicio) }}{{ exp.actual ? ' - Presente' : (exp.fechaFin ? ' - ' +
+                    formatDate(exp.fechaFin) : '') }}
                 </span>
               </div>
-              <p v-if="exp.descripcion" class="text-gray-700 mt-2">{{ exp.descripcion }}</p>
+              <p class="font-medium text-sm mb-2">{{ exp.empresa }}</p>
+              <p v-if="exp.descripcion" class="text-sm text-gray-700 leading-relaxed">
+                {{ exp.descripcion }}
+              </p>
             </div>
           </div>
         </section>
 
         <!-- Acciones -->
-        <div class="p-6 bg-gray-50 flex justify-center gap-4">
-          <button 
-            @click="imprimirCV"
-            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition duration-200 flex items-center"
-          >
-            <span class="mr-2">🖨️</span> Imprimir CV
+        <div class="p-6 bg-gray-50 flex justify-center gap-4 no-print">
+          <button @click="imprimirCV" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 text-sm font-medium">
+            Imprimir CV
           </button>
-          <button 
-            @click="editarCV"
-            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition duration-200 flex items-center"
-          >
-            <span class="mr-2">✏️</span> Editar CV
+          <button @click="editarCV"
+            class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-800 px-6 py-2 text-sm font-medium">
+            Editar CV
           </button>
         </div>
       </div>
@@ -147,11 +155,6 @@ onMounted(() => {
 })
 
 // Computed properties para verificar si hay datos
-const hasPersonalInfo = computed(() => {
-  const data = cvData.value.datosPersonales
-  return data.fechaNacimiento || data.direccion || data.codigoPostal
-})
-
 const hasLinks = computed(() => {
   const data = cvData.value.datosPersonales
   return data.linkedin || data.github
@@ -185,12 +188,13 @@ const editarCV = () => {
   .no-print {
     display: none !important;
   }
-  
+
   body {
     background: white !important;
   }
-  
+
   .bg-gray-50 {
     background: white !important;
   }
-}</style>
+}
+</style>

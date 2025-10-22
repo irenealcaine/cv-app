@@ -12,7 +12,8 @@ const cvData = ref({
     ciudad: '',
     codigoPostal: '',
     linkedin: '',
-    github: ''
+    github: '',
+    descripcion: ''
   },
   formacion: [],
   experiencia: []
@@ -39,7 +40,8 @@ export function useCVStore() {
         ciudad: '',
         codigoPostal: '',
         linkedin: '',
-        github: ''
+        github: '',
+        descripcion: ''
       },
       formacion: [],
       experiencia: []
