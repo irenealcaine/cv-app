@@ -1,5 +1,5 @@
 <template>
-  <section v-if="experience.length > 0" class="p-1">
+  <section v-if="experience.length > 0" class="p-2">
     <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
       Experiencia Laboral
     </h2>

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="education.length > 0" class="p-1 border-b border-gray-300">
+  <section v-if="education.length > 0" class="p-2 border-b border-gray-300">
     <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
       Formación Académica
     </h2>

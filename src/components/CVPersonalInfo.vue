@@ -1,5 +1,5 @@
 <template>
-  <section class="p-1 border-b border-gray-300">
+  <section class="p-2 border-b border-gray-300">
     <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
       Datos Personales
     </h2>
