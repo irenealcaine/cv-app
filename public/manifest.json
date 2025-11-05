@@ -1,0 +1,41 @@
+{
+  "name": "CV Builder - Generador de Currículum Profesional",
+  "short_name": "CV Builder",
+  "description": "Crea tu currículum vitae de forma fácil y profesional con nuestro generador online gratuito",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "business", "utilities"],
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/cv.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cv.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cv.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/cv.png",
+      "sizes": "640x480",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista del generador de CV"
+    }
+  ]
+}

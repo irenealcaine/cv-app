@@ -156,18 +156,18 @@ const updateExperience = ({ id, field, value }) => {
 const llenarDatosEjemplo = () => {
   // Datos personales de ejemplo
   personalData.value = {
-    nombre: 'María',
-    apellidos: 'García López',
+    nombre: 'Lucía',
+    apellidos: 'Fernandez López',
     descripcion: 'Desarrolladora Full Stack apasionada por crear soluciones tecnológicas innovadoras. Con experiencia en desarrollo web moderno y metodologías ágiles.',
     fechaNacimiento: '1995-03-15',
-    telefono: '+34 123 456 789',
-    email: 'maria.garcia@email.com',
-    direccion: 'Calle Mayor 123, 4º B',
-    ciudad: 'Madrid',
-    codigoPostal: '28001',
-    linkedin: 'https://linkedin.com/in/maria-garcia',
-    github: 'https://github.com/maria-garcia',
-    portfolio: 'https://maria-garcia.dev'
+    telefono: '+34 123 45 67 89',
+    email: 'lucia.fernandez@email.com',
+    direccion: 'Calle Falsa 123, 4º B',
+    ciudad: 'Valencia',
+    codigoPostal: '46001',
+    linkedin: 'https://linkedin.com/in/lucia-fernandez',
+    github: 'https://github.com/lucia-fernandez',
+    portfolio: 'https://lucia-fernandez.dev'
   }
 
   // Educación de ejemplo

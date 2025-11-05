@@ -17,8 +17,8 @@
         <!-- Datos Personales -->
          <div class="flex flex-col sm:flex-row">
 
-           <CVPersonalInfo :personal-data="cvData.datosPersonales" class="sm:w-5/12"/>
-           <CVLinksSection :personal-data="cvData.datosPersonales" class="sm:w-7/12"/>
+           <CVPersonalInfo :personal-data="cvData.datosPersonales" class="sm:w-1/2"/>
+           <CVLinksSection :personal-data="cvData.datosPersonales" class="sm:w-1/2"/>
          </div>
 
         <!-- Enlaces -->
