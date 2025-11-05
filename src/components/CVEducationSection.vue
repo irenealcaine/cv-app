@@ -6,8 +6,7 @@
     <div class="space-y-6">
       <div v-for="edu in education" :key="edu.id">
         <div class="flex justify-between items-start mb-2">
-          <p class="font-bold text-black">{{ edu.titulo }} - <span class="font-medium text-sm mb-2">{{ edu.institucion }}</span></p>
-          
+          <h3 class="font-bold text-black">{{ edu.titulo }} - <span class="font-medium text-sm mb-2">{{ edu.institucion }}</span></h3>
           <span v-if="edu.fechaInicio || edu.fechaFin" class="text-sm text-gray-600">
             {{ formatDate(edu.fechaInicio) }}{{ edu.fechaFin ? ' - ' + formatDate(edu.fechaFin) : ' - En curso' }}
           </span>
@@ -33,7 +32,7 @@ const formatDate = (dateString) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('es-ES', {
     year: 'numeric',
-    month: 'numeric'
+    month: 'short'
   })
 }
 </script>

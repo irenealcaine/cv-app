@@ -5,23 +5,20 @@
     </h2>
     <div class="flex flex-col gap-1">
       <div v-if="personalData.linkedin" class="flex">
-        <span class="">LinkedIn:</span>
         <a :href="personalData.linkedin" target="_blank"
-          class="ml-2 underline text-black hover:no-underline font-medium">
+          class="">
           {{ personalData.linkedin }}
         </a>
       </div>
       <div v-if="personalData.github" class="flex">
-        <span class="">GitHub:</span>
         <a :href="personalData.github" target="_blank"
-          class="ml-2 underline text-black hover:no-underline font-medium">
+          class="">
           {{ personalData.github }}
         </a>
       </div>
       <div v-if="personalData.portfolio" class="flex">
-        <span class="">Portfolio:</span>
         <a :href="personalData.portfolio" target="_blank"
-          class="ml-2 underline text-black hover:no-underline font-medium">
+          class="">
           {{ personalData.portfolio }}
         </a>
       </div>

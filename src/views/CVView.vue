@@ -15,10 +15,10 @@
         <CVPersonalHeader :personal-data="cvData.datosPersonales" />
 
         <!-- Datos Personales -->
-         <div class="flex flex-col md:flex-row">
+         <div class="flex flex-col sm:flex-row">
 
-           <CVPersonalInfo :personal-data="cvData.datosPersonales" class="md:w-5/12"/>
-           <CVLinksSection :personal-data="cvData.datosPersonales" class="md:w-7/12"/>
+           <CVPersonalInfo :personal-data="cvData.datosPersonales" class="sm:w-5/12"/>
+           <CVLinksSection :personal-data="cvData.datosPersonales" class="sm:w-7/12"/>
          </div>
 
         <!-- Enlaces -->
