@@ -25,6 +25,13 @@
           @update-experience="updateExperience"
         />
 
+        <OtherDataForm 
+          :otrosDatos="otrosDatos"
+          @add-other-data="agregarOtrosDatos"
+          @remove-other-data="eliminarOtrosDatos"
+          @update-other-data="updateOtherData"
+        />
+
         <!-- Botones -->
         <div class="p-6 bg-gray-50 text-center space-y-4">
           <!-- Botón de datos de ejemplo -->
@@ -60,6 +67,7 @@ import CVHeader from '../components/CVHeader.vue'
 import PersonalDataForm from '../components/PersonalDataForm.vue'
 import EducationForm from '../components/EducationForm.vue'
 import ExperienceForm from '../components/ExperienceForm.vue'
+import OtherDataForm from '../components/OtherDataForm.vue'
 import { useCVStore } from '../composables/useCVStore.js'
 
 const router = useRouter()
@@ -83,6 +91,7 @@ const personalData = ref({
 
 const educacion = ref([])
 const experiencia = ref([])
+const otrosDatos = ref([])
 
 // Cargar datos existentes del store al montar el componente
 onMounted(() => {
@@ -93,10 +102,12 @@ onMounted(() => {
     personalData.value = { ...existingData.datosPersonales }
     educacion.value = existingData.formacion.map(edu => ({ ...edu }))
     experiencia.value = existingData.experiencia.map(exp => ({ ...exp }))
+    otrosDatos.value = existingData.otrosDatos ? existingData.otrosDatos.map(otros => ({ ...otros })) : []
   } else {
     // Si no hay datos, agregar elementos iniciales vacíos
     agregarEducacion()
     agregarExperiencia()
+    agregarOtrosDatos()
   }
 })
 
@@ -149,6 +160,25 @@ const updateExperience = ({ id, field, value }) => {
   const experience = experiencia.value.find(exp => exp.id === id)
   if (experience) {
     experience[field] = value
+  }
+}
+
+// Funciones para manejar otros datos
+const agregarOtrosDatos = () => {
+  otrosDatos.value.push({
+    id: Date.now(),
+    texto: ''
+  })
+}
+
+const eliminarOtrosDatos = (id) => {
+  otrosDatos.value = otrosDatos.value.filter(otros => otros.id !== id)
+}
+
+const updateOtherData = ({ id, value }) => {
+  const otherData = otrosDatos.value.find(otros => otros.id === id)
+  if (otherData) {
+    otherData.texto = value
   }
 }
 
@@ -220,6 +250,26 @@ const llenarDatosEjemplo = () => {
       actual: false
     }
   ]
+
+  // Otros datos de ejemplo
+  otrosDatos.value = [
+    {
+      id: 3001,
+      texto: 'Carnet de conducir B'
+    },
+    {
+      id: 3002,
+      texto: 'Disponibilidad para viajar'
+    },
+    {
+      id: 3003,
+      texto: 'Inglés nivel B2 - First Certificate'
+    },
+    {
+      id: 3004,
+      texto: 'Francés nivel básico A2'
+    }
+  ]
 }
 
 // Función para enviar formulario
@@ -227,7 +277,8 @@ const enviarFormulario = () => {
   const cvData = {
     datosPersonales: personalData.value,
     formacion: educacion.value,
-    experiencia: experiencia.value
+    experiencia: experiencia.value,
+    otrosDatos: otrosDatos.value
   }
   
   // Validar que al menos el nombre esté lleno

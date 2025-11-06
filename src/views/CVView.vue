@@ -29,6 +29,9 @@
         <!-- Experiencia Laboral -->
         <CVExperienceSection :experience="cvData.experiencia" />
 
+        <!-- Otros Datos -->
+        <CVOtherDataSection :otrosDatos="cvData.otrosDatos" />
+
         <!-- Acciones -->
         <div class="p-6 bg-gray-50 flex justify-center gap-4 no-print">
           <button @click="imprimirCV" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 text-sm font-medium">
@@ -53,6 +56,7 @@ import CVPersonalInfo from '../components/CVPersonalInfo.vue'
 import CVLinksSection from '../components/CVLinksSection.vue'
 import CVEducationSection from '../components/CVEducationSection.vue'
 import CVExperienceSection from '../components/CVExperienceSection.vue'
+import CVOtherDataSection from '../components/CVOtherDataSection.vue'
 
 const router = useRouter()
 const { cvData } = useCVStore()

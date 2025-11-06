@@ -1,12 +1,12 @@
 <template>
   <section v-if="education.length > 0" class="p-2 border-b border-gray-300">
-    <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+    <h2 class="text-lg font-bold text-black mb-2 uppercase tracking-wide">
       Formación Académica
     </h2>
-    <div class="space-y-6">
+    <div class="space-y-4">
       <div v-for="edu in education" :key="edu.id">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="font-bold text-black">{{ edu.titulo }} - <span class="font-medium text-sm mb-2">{{ edu.institucion }}</span></h3>
+        <div class="flex justify-between items-start mb-1">
+          <h3 class="font-bold text-black ml-2"> • {{ edu.titulo }} - <span class="font-medium text-sm mb-2">{{ edu.institucion }}</span></h3>
           <span v-if="edu.fechaInicio || edu.fechaFin" class="text-sm text-gray-600">
             {{ formatDate(edu.fechaInicio) }}{{ edu.fechaFin ? ' - ' + formatDate(edu.fechaFin) : ' - En curso' }}
           </span>

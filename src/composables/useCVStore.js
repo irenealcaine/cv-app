@@ -17,7 +17,8 @@ const cvData = ref({
     descripcion: ''
   },
   formacion: [],
-  experiencia: []
+  experiencia: [],
+  otrosDatos: []
 })
 
 export function useCVStore() {
