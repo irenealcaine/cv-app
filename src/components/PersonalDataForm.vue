@@ -119,6 +119,40 @@
         >
       </div>
     </div>
+
+    <!-- Campo de foto (ocupa todo el ancho) -->
+    <div class="mt-6 space-y-4">
+      <div class="space-y-2">
+        <label for="foto" class="block text-sm font-semibold text-gray-700">Foto de perfil (opcional)</label>
+        <div class="flex items-center gap-4">
+          <input 
+            id="foto"
+            @change="handleFileUpload"
+            type="file"
+            accept="image/*"
+            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          >
+          <button 
+            v-if="personalData.foto"
+            @click="removePhoto"
+            type="button"
+            class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+          >
+            Eliminar
+          </button>
+        </div>
+        <p class="text-xs text-gray-500">Formatos admitidos: JPG, PNG, GIF (máx. 5MB)</p>
+        
+        <!-- Preview de la foto -->
+        <div v-if="personalData.foto" class="mt-4">
+          <img 
+            :src="personalData.foto" 
+            alt="Preview foto de perfil"
+            class="w-32 h-auto rounded-md object-cover border border-gray-300"
+          >
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -134,5 +168,38 @@ const emit = defineEmits(['update-personal-data'])
 
 const updateField = (field, value) => {
   emit('update-personal-data', { field, value })
+}
+
+const handleFileUpload = (event) => {
+  const file = event.target.files[0]
+  if (!file) return
+
+  // Validar tipo de archivo
+  if (!file.type.startsWith('image/')) {
+    alert('Por favor, selecciona un archivo de imagen válido.')
+    return
+  }
+
+  // Validar tamaño (5MB máximo)
+  if (file.size > 5 * 1024 * 1024) {
+    alert('El archivo es demasiado grande. Por favor, selecciona una imagen menor a 5MB.')
+    return
+  }
+
+  // Convertir a base64 para almacenar
+  const reader = new FileReader()
+  reader.onload = (e) => {
+    updateField('foto', e.target.result)
+  }
+  reader.readAsDataURL(file)
+}
+
+const removePhoto = () => {
+  updateField('foto', '')
+  // Limpiar el input file
+  const fileInput = document.getElementById('foto')
+  if (fileInput) {
+    fileInput.value = ''
+  }
 }
 </script>

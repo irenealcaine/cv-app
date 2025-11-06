@@ -86,7 +86,8 @@ const personalData = ref({
   codigoPostal: '',
   linkedin: '',
   github: '',
-  portfolio: ''
+  portfolio: '',
+  foto: ''
 })
 
 const educacion = ref([])
@@ -197,7 +198,8 @@ const llenarDatosEjemplo = () => {
     codigoPostal: '46001',
     linkedin: 'https://linkedin.com/in/lucia-fernandez',
     github: 'https://github.com/lucia-fernandez',
-    portfolio: 'https://lucia-fernandez.dev'
+    portfolio: 'https://lucia-fernandez.dev',
+    foto: 'https://ui-avatars.com/api/?name=Lucía+Fernandez&background=0D8ABC&color=fff&size=128'
   }
 
   // Educación de ejemplo

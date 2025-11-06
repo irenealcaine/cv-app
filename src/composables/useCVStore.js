@@ -14,7 +14,8 @@ const cvData = ref({
     linkedin: '',
     github: '',
     portfolio: '',
-    descripcion: ''
+    descripcion: '',
+    foto: ''
   },
   formacion: [],
   experiencia: [],
