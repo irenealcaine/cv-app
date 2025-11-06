@@ -11,18 +11,18 @@
           @update-personal-data="updatePersonalData"
         />
 
-        <EducationForm 
-          :educacion="educacion"
-          @add-education="agregarEducacion"
-          @remove-education="eliminarEducacion"
-          @update-education="updateEducation"
-        />
-
         <ExperienceForm 
           :experiencia="experiencia"
           @add-experience="agregarExperiencia"
           @remove-experience="eliminarExperiencia"
           @update-experience="updateExperience"
+        />
+
+        <EducationForm 
+          :educacion="educacion"
+          @add-education="agregarEducacion"
+          @remove-education="eliminarEducacion"
+          @update-education="updateEducation"
         />
 
         <OtherDataForm 

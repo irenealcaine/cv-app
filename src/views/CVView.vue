@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen py-8">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-3xl mx-auto">
       <!-- Botón volver -->
       <div class="mb-6 no-print">
         <button @click="volverAlFormulario"
@@ -10,24 +10,22 @@
       </div>
 
       <!-- CV Container -->
-      <div class="bg-white">
+      <div class="bg-white max-w-4xl">
         <!-- Header con nombre y descripción -->
         <CVPersonalHeader :personal-data="cvData.datosPersonales" />
 
-        <!-- Datos Personales -->
+        <!-- Datos Personales y enlaces -->
          <div class="flex flex-col sm:flex-row">
 
            <CVPersonalInfo :personal-data="cvData.datosPersonales" class="sm:w-1/2"/>
            <CVLinksSection :personal-data="cvData.datosPersonales" class="sm:w-1/2"/>
          </div>
 
-        <!-- Enlaces -->
+        <!-- Experiencia Laboral -->
+        <CVExperienceSection :experience="cvData.experiencia" />
 
         <!-- Formación Académica -->
         <CVEducationSection :education="cvData.formacion" />
-
-        <!-- Experiencia Laboral -->
-        <CVExperienceSection :experience="cvData.experiencia" />
 
         <!-- Otros Datos -->
         <CVOtherDataSection :otrosDatos="cvData.otrosDatos" />
