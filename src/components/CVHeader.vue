@@ -1,8 +1,8 @@
 <template>
   <header class="text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8">
-    <h1 class="text-4xl font-bold mb-2">Formulario de Currículum Vitae</h1>
+    <h1 class="text-4xl font-bold mb-2">Crea tu Currículum Vitae</h1>
     <p class="text-xl opacity-90">
-      {{ showNewCVButton ? 'Editando CV existente - Modifica los datos necesarios' : 'Completa todos los campos para generar tu CV' }}
+      {{ showNewCVButton ? 'Editando CV existente - Modifica los datos necesarios' : 'Completa todos los campos para generar tu CV. O tambien puedes poner datos de ejemplo en el botón de abajo' }}
     </p>
     
     <!-- Botón para nuevo CV si hay datos existentes -->
