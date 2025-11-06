@@ -1,6 +1,6 @@
 <template>
   <section v-if="hasLinks" class="p-2 border-b border-gray-300">
-    <h2 class="text-lg font-bold text-black mb-4 uppercase tracking-wide">
+    <h2 class="text-lg font-bold text-black mb-1 uppercase tracking-wide">
       Enlaces
     </h2>
     <div class="flex flex-col gap-1">
