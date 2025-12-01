@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <CVHeader />
+      <CVHeader @llenar-datos-ejemplo="llenarDatosEjemplo" />
 
       <form @submit.prevent="enviarFormulario" class="bg-white rounded-lg shadow-xl overflow-hidden">
         
@@ -38,28 +38,14 @@
           @update-other-data="updateOtherData"
         />
 
-        <!-- Botones -->
-        <div class="p-6 bg-gray-50 text-center space-y-4">
-          <!-- Botón de datos de ejemplo -->
-          <div>
-            <button 
-              type="button"
-              @click="llenarDatosEjemplo"
-              class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition duration-300 mr-4"
-            >
-              🔧 Llenar con datos de ejemplo
-            </button>
-          </div>
-          
-          <!-- Botón de envío -->
-          <div>
-            <button 
-              type="submit"
-              class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-lg"
-            >
-              📄 Generar CV
-            </button>
-          </div>
+        <!-- Botón de envío -->
+        <div class="p-6 bg-gray-50 text-center">
+          <button 
+            type="submit"
+            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-lg"
+          >
+            📄 Generar CV
+          </button>
         </div>
       </form>
     </div>

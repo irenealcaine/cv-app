@@ -5,9 +5,20 @@
       {{ showNewCVButton ? 'Editando CV existente - Modifica los datos necesarios' : 'Completa todos los campos para generar tu CV. O tambien puedes poner datos de ejemplo en el botón de abajo' }}
     </p>
     
-    <!-- Botón para nuevo CV si hay datos existentes -->
-    <div v-if="showNewCVButton" class="mt-4">
+    <!-- Botones de acción -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3 justify-center items-center">
+      <!-- Botón de datos de ejemplo -->
       <button 
+        @click="$emit('llenar-datos-ejemplo')"
+        type="button"
+        class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg font-semibold transition duration-200 text-sm"
+      >
+        🔧 Llenar con datos de ejemplo
+      </button>
+      
+      <!-- Botón para nuevo CV si hay datos existentes -->
+      <button 
+        v-if="showNewCVButton"
         @click="nuevoCV"
         class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg font-semibold transition duration-200 text-sm"
       >
@@ -20,6 +31,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useCVStore } from '../composables/useCVStore.js'
+
+defineEmits(['llenar-datos-ejemplo'])
 
 const { cvData, clearCVData } = useCVStore()
 
