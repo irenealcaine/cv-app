@@ -6,7 +6,7 @@
     <ul class="">
       <li v-for="item in validData" :key="item.id" class="flex items-start">
         <span class="text-gray-700 mr-2">-</span>
-        <span class="text-sm text-gray-700 leading-relaxed">{{ item.texto }}</span>
+        <span class="text-sm text-gray-700 ">{{ item.texto }}</span>
       </li>
     </ul>
   </section>

@@ -3,7 +3,7 @@
     <h2 class="text-lg font-bold text-black mb-1 uppercase tracking-wide">
       Datos Personales
     </h2>
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col text-sm">
       <div v-if="personalData.telefono" class="flex">
         <span class="">{{ personalData.telefono }}</span>
       </div>

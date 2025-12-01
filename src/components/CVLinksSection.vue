@@ -3,7 +3,7 @@
     <h2 class="text-lg font-bold text-black mb-1 uppercase tracking-wide">
       Enlaces
     </h2>
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col text-sm">
       <div v-if="personalData.linkedin" class="flex">
         <a :href="personalData.linkedin" target="_blank"
           class="">
