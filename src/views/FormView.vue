@@ -16,6 +16,9 @@
           @add-experience="agregarExperiencia"
           @remove-experience="eliminarExperiencia"
           @update-experience="updateExperience"
+          @add-exp-description-point="addExperienceDescriptionPoint"
+          @remove-exp-description-point="removeExperienceDescriptionPoint"
+          @update-exp-description-point="updateExperienceDescriptionPoint"
         />
 
         <EducationForm 
@@ -23,6 +26,9 @@
           @add-education="agregarEducacion"
           @remove-education="eliminarEducacion"
           @update-education="updateEducation"
+          @add-description-point="addEducationDescriptionPoint"
+          @remove-description-point="removeEducationDescriptionPoint"
+          @update-description-point="updateEducationDescriptionPoint"
         />
 
         <OtherDataForm 
@@ -125,7 +131,7 @@ const agregarEducacion = () => {
     institucion: '',
     fechaInicio: '',
     fechaFin: '',
-    descripcion: ''
+    descripcion: ['']
   })
 }
 
@@ -140,6 +146,28 @@ const updateEducation = ({ id, field, value }) => {
   }
 }
 
+// Funciones para manejar puntos de descripción en educación
+const addEducationDescriptionPoint = (id) => {
+  const education = educacion.value.find(edu => edu.id === id)
+  if (education) {
+    education.descripcion.push('')
+  }
+}
+
+const removeEducationDescriptionPoint = ({ id, index }) => {
+  const education = educacion.value.find(edu => edu.id === id)
+  if (education && education.descripcion.length > 1) {
+    education.descripcion.splice(index, 1)
+  }
+}
+
+const updateEducationDescriptionPoint = ({ id, index, value }) => {
+  const education = educacion.value.find(edu => edu.id === id)
+  if (education) {
+    education.descripcion[index] = value
+  }
+}
+
 // Funciones para manejar experiencia
 const agregarExperiencia = () => {
   experiencia.value.push({
@@ -148,7 +176,7 @@ const agregarExperiencia = () => {
     empresa: '',
     fechaInicio: '',
     fechaFin: '',
-    descripcion: '',
+    descripcion: [''],
     actual: false
   })
 }
@@ -161,6 +189,28 @@ const updateExperience = ({ id, field, value }) => {
   const experience = experiencia.value.find(exp => exp.id === id)
   if (experience) {
     experience[field] = value
+  }
+}
+
+// Funciones para manejar puntos de descripción en experiencia
+const addExperienceDescriptionPoint = (id) => {
+  const experience = experiencia.value.find(exp => exp.id === id)
+  if (experience) {
+    experience.descripcion.push('')
+  }
+}
+
+const removeExperienceDescriptionPoint = ({ id, index }) => {
+  const experience = experiencia.value.find(exp => exp.id === id)
+  if (experience && experience.descripcion.length > 1) {
+    experience.descripcion.splice(index, 1)
+  }
+}
+
+const updateExperienceDescriptionPoint = ({ id, index, value }) => {
+  const experience = experiencia.value.find(exp => exp.id === id)
+  if (experience) {
+    experience.descripcion[index] = value
   }
 }
 
@@ -210,7 +260,11 @@ const llenarDatosEjemplo = () => {
       institucion: 'Universidad Politécnica de Madrid',
       fechaInicio: '2013-09',
       fechaFin: '2017-06',
-      descripcion: 'Especialización en Ingeniería del Software. Proyecto final sobre aplicaciones web progresivas con React y Node.js.'
+      descripcion: [
+        'Especialización en Ingeniería del Software',
+        'Proyecto final sobre aplicaciones web progresivas con React y Node.js',
+        'Promedio de 8.5/10 - Matrícula de Honor en 3 asignaturas'
+      ]
     },
     {
       id: 1002,
@@ -218,7 +272,12 @@ const llenarDatosEjemplo = () => {
       institucion: 'TheBridge Academy',
       fechaInicio: '2017-09',
       fechaFin: '2018-03',
-      descripcion: 'Máster intensivo enfocado en tecnologías modernas como Vue.js, React, Node.js, MongoDB y metodologías ágiles.'
+      descripcion: [
+        'Máster intensivo de 800 horas en desarrollo web',
+        'Tecnologías: Vue.js, React, Node.js, MongoDB, Express',
+        'Metodologías ágiles: Scrum y Kanban',
+        'Proyecto final: E-commerce completo con panel de administración'
+      ]
     }
   ]
 
@@ -230,7 +289,13 @@ const llenarDatosEjemplo = () => {
       empresa: 'TechSolutions S.L.',
       fechaInicio: '2021-06',
       fechaFin: '',
-      descripcion: 'Desarrollo de aplicaciones web con Vue.js y Node.js. Implementación de APIs RESTful y gestión de bases de datos. Colaboración en equipos ágiles usando Scrum.',
+      descripcion: [
+        'Desarrollo de aplicaciones web con Vue.js y Node.js',
+        'Implementación de APIs RESTful y gestión de bases de datos MySQL/MongoDB',
+        'Colaboración en equipos ágiles usando Scrum',
+        'Líder técnico en proyecto de migración a microservicios',
+        'Mejora del rendimiento de aplicaciones en un 40%'
+      ],
       actual: true
     },
     {
@@ -239,7 +304,12 @@ const llenarDatosEjemplo = () => {
       empresa: 'StartupInnovate',
       fechaInicio: '2019-03',
       fechaFin: '2021-05',
-      descripcion: 'Desarrollo de interfaces de usuario responsivas con React y TypeScript. Optimización de rendimiento y experiencia de usuario. Integración con APIs y servicios externos.',
+      descripcion: [
+        'Desarrollo de interfaces de usuario responsivas con React y TypeScript',
+        'Optimización de rendimiento y experiencia de usuario',
+        'Integración con APIs REST y GraphQL',
+        'Implementación de tests unitarios y de integración con Jest'
+      ],
       actual: false
     },
     {
@@ -248,7 +318,12 @@ const llenarDatosEjemplo = () => {
       empresa: 'WebDev Agency',
       fechaInicio: '2018-04',
       fechaFin: '2019-02',
-      descripcion: 'Desarrollo de sitios web corporativos con HTML5, CSS3 y JavaScript. Maquetación responsive y optimización SEO.',
+      descripcion: [
+        'Desarrollo de sitios web corporativos con HTML5, CSS3 y JavaScript',
+        'Maquetación responsive para múltiples dispositivos',
+        'Optimización SEO y mejora de velocidad de carga',
+        'Colaboración con diseñadores UX/UI'
+      ],
       actual: false
     }
   ]

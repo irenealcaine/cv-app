@@ -11,9 +11,15 @@
             {{ formatDate(exp.fechaInicio) }}{{ exp.actual ? ' - Presente' : (exp.fechaFin ? ' - ' + formatDate(exp.fechaFin) : '') }}
           </span>
         </div>
-        <p v-if="exp.descripcion" class="text-sm text-gray-700 leading-relaxed">
-          {{ exp.descripcion }}
-        </p>
+        <!-- Descripción como lista -->
+        <div v-if="exp.descripcion && hasValidDescriptionPoints(exp.descripcion)" class="ml-4 mt-1">
+          <ul class="text-sm text-gray-700 leading-relaxed space-y-1">
+            <li v-for="(punto, index) in validDescriptionPoints(exp.descripcion)" :key="index" class="flex items-start">
+              <span class="text-gray-500 mr-2 mt-0.5">•</span>
+              <span>{{ punto }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -34,5 +40,16 @@ const formatDate = (dateString) => {
     year: 'numeric',
     month: 'short'
   })
+}
+
+// Funciones para validar y filtrar puntos de descripción
+const hasValidDescriptionPoints = (descripcion) => {
+  if (!Array.isArray(descripcion)) return false
+  return descripcion.some(punto => punto && punto.trim().length > 0)
+}
+
+const validDescriptionPoints = (descripcion) => {
+  if (!Array.isArray(descripcion)) return []
+  return descripcion.filter(punto => punto && punto.trim().length > 0)
 }
 </script>

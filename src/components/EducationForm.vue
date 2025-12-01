@@ -71,15 +71,38 @@
           >
         </div>
         
-        <div class="md:col-span-2 space-y-2">
-          <label class="block text-sm font-semibold text-gray-700">Descripción</label>
-          <textarea 
-            :value="edu.descripcion"
-            @input="updateEducation(edu.id, 'descripcion', $event.target.value)"
-            placeholder="Describe tu formación, especialización, calificaciones..."
-            rows="3"
-            class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
-          ></textarea>
+        <!-- Descripción como lista -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex justify-between items-center">
+            <label class="block text-sm font-semibold text-gray-700">Descripción (puntos destacados)</label>
+            <button 
+              type="button"
+              @click="addDescriptionPoint(edu.id)"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
+            >
+              + Agregar punto
+            </button>
+          </div>
+          
+          <div v-for="(punto, pIndex) in edu.descripcion" :key="`${edu.id}-desc-${pIndex}`" class="flex gap-2 items-start">
+            <div class="flex-1">
+              <input 
+                :value="punto"
+                @input="updateDescriptionPoint(edu.id, pIndex, $event.target.value)"
+                type="text" 
+                placeholder="Ej: Especialización en Ingeniería del Software, Proyecto final sobre..."
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-sm"
+              >
+            </div>
+            <button 
+              v-if="edu.descripcion.length > 1"
+              @click="removeDescriptionPoint(edu.id, pIndex)"
+              type="button"
+              class="bg-red-500 hover:bg-red-600 text-white px-2 py-2 rounded text-xs"
+            >
+              ✕
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -94,9 +117,21 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['add-education', 'remove-education', 'update-education'])
+const emit = defineEmits(['add-education', 'remove-education', 'update-education', 'add-description-point', 'remove-description-point', 'update-description-point'])
 
 const updateEducation = (id, field, value) => {
   emit('update-education', { id, field, value })
+}
+
+const addDescriptionPoint = (id) => {
+  emit('add-description-point', id)
+}
+
+const removeDescriptionPoint = (id, index) => {
+  emit('remove-description-point', { id, index })
+}
+
+const updateDescriptionPoint = (id, index, value) => {
+  emit('update-description-point', { id, index, value })
 }
 </script>
